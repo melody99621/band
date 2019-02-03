@@ -279,23 +279,23 @@
 </div>
 <!--map-->
 <div class="container" id="map">
-<h3 class="text-center">Map</h3>
-  <ul class="nav nav-pills nav-justified">
-    <li class="active"><a data-toggle="pill" href="#Kaohsiung">Kaohsiung</a></li>
-    <li><a data-toggle="pill" href="#Seoul">Seoul</a></li>
-    <li><a data-toggle="pill" href="#Tokyo">Tokyo</a></li>
-  </ul>
-  <div id="Kaohsiung">
-    <div id="googleMap" style="width:100%;height:300px;"></div>
-  </div>
-  <div id="Seoul">
-    <div id="googleMap" style="width:100%;height:300px;">
-  </div>
-  </div>
-  <div id="Tokyo">
-    <div id="googleMap" style="width:100%;height:300px;"> 
-</div>
-</div>
+  <h3 class="text-center">Map</h3>
+    <ul class="nav nav-pills nav-justified">
+      <li class="active"><a data-toggle="pill" href="#Kaohsiung">Kaohsiung</a></li>
+      <li><a data-toggle="pill" href="#Seoul">Seoul</a></li>
+      <li><a data-toggle="pill" href="#Tokyo">Tokyo</a></li>
+    </ul>
+    <div class="tab-content">
+      <div id="Kaohsiung" class="tab-pane fade in active" >
+        <div id="Kaohsiung1" style="width:100%;height:400px;"></div>
+      </div>
+      <div id="Seoul" class="tab-pane fade in" >
+        <div id="Seoul1" style="width:100%;height:400px;"></div>
+      </div>
+      <div id="Tokyo" class="tab-pane fade in" >
+        <div id="Tokyo1" style="width:100%;height:400px;"></div>
+      </div>
+    </div>
 </div>
 <!--Footer-->
 
@@ -336,15 +336,38 @@ $(document).ready(function(){
 
 </script>
 <script>
-function myMap() {
-var mapProp= {
-  center:new google.maps.LatLng(51.508742,-0.120850),
-  zoom:5,
-};
-var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
-}
+    function initMap() {
+        map1 = new google.maps.Map(document.getElementById('Kaohsiung1'), {
+          center: {lat: 22.7030861, lng: 120.2944884},
+          zoom: 9
+        });
+        map2 = new google.maps.Map(document.getElementById('Seoul1'), {
+          center: {lat: 37.4981852, lng: 126.8671971},
+          zoom: 9
+        });
+        map3 = new google.maps.Map(document.getElementById('Tokyo1'), {
+          center: {lat: 35.7056396, lng: 139.7497026},
+          zoom: 9
+        });
+        
 
+        var marker = new google.maps.Marker({
+          position: {lat: 22.7030861, lng: 120.2944884},
+          map: map1,          
+        });
+        var marker = new google.maps.Marker({
+          position: {lat: 37.4981852, lng: 126.8671971},
+          map: map2,          
+        });
+        var marker = new google.maps.Marker({
+          position: {lat: 35.7056396, lng: 139.7497026},
+          map: map3,          
+        });
+        
+      }
 </script>
-	
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6tbY00B0wxH8xP8gs7jaHT3XxuT6zm6o&callback=initMap"></script>
+
+
 </body>
 </html>
